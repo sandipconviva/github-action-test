@@ -1,0 +1,20 @@
+name: Generate Tar Archive
+
+on: [push]
+
+jobs:
+  generate_tar:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Generate tar archive
+      run: tar -czvf my_folder.tar.gz my_folder
+
+    - name: Upload artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: my_folder.tar.gz
+        path: my_folder.tar.gz
